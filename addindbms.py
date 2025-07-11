@@ -44,8 +44,8 @@ def add_detection(plate_text, confidence):
 
 # Example usage
 plate_text = "MH12AB8001"
-owner_name = "harsh Kachhaway"
-phone_number = "+917249246230"
+owner_name = "harsh sanjaysingh Kachhaway"
+phone_number = "+917249415155"
 confidence = 0.95
 
 # Ensure plate info is stored before detection

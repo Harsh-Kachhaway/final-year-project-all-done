@@ -64,23 +64,23 @@ running_flags = {}
 ocr_data = []
 data_lock = threading.Lock()
 
-conn = sqlite3.connect(resource_path("data/detection_data.db"), check_same_thread=False)
-cursor = conn.cursor()
-cursor.execute('''
-    CREATE TABLE IF NOT EXISTS detections (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        timestamp TEXT,
-        plate_text TEXT,
-        confidence REAL
-    )
-''')
-conn.commit()
+# conn = sqlite3.connect(resource_path("data/detection_data.db"), check_same_thread=False)
+# cursor = conn.cursor()
+# cursor.execute('''
+#     CREATE TABLE IF NOT EXISTS detections (
+#         id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         timestamp TEXT,
+#         plate_text TEXT,
+#         confidence REAL
+#     )
+# ''')
+# conn.commit()
 
-def save_to_db(data):
-    with data_lock:
-        cursor.execute("INSERT INTO detections (timestamp, plate_text, confidence) VALUES (?, ?, ?)",
-                       (data['Timestamp'], data['Plate Text'], data['Confidence']))
-        conn.commit()
+# def save_to_db(data):
+#     with data_lock:
+#         cursor.execute("INSERT INTO detections (timestamp, plate_text, confidence) VALUES (?, ?, ?)",
+#                        (data['Timestamp'], data['Plate Text'], data['Confidence']))
+#         conn.commit()
 
 def process_frame(frame):
     timestamp_text = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
